@@ -13,7 +13,7 @@ import { NgxGalleryAction } from './ngx-gallery-action.model';
                 <div *ngFor="let image of getImages(); let i = index;">
                     <a [href]="hasLink(i) ? links[i] : '#'" [target]="linkTarget" class="ngx-gallery-thumbnail" [style.width]="getThumbnailWidth()"
                         (click)="handleClick($event, i)" 
-                        [style.height]="getThumbnailHeight()" [style.left]="getThumbnailLeft(i)" [style.top]="getThumbnailTop(i)"
+                        [style.height]="getThumbnailHeight()" [style.left]="getThumbnailLeft(i)" [style.right]="getThumbnailRight(i)" [style.top]="getThumbnailTop(i)"
                         [ngClass]="{ 'ngx-gallery-active': i == selectedIndex, 'ngx-gallery-clickable': clickable }"
                         [attr.aria-label]="labels[i]">
                         <div *ngIf="getFileType(image) == 'image'" [style.background-image]="getSafeUrl(image)" class="ngx-gallery-thumbnail"
@@ -187,8 +187,20 @@ export class NgxGalleryThumbnailsComponent implements OnChanges {
     }
 
     getThumbnailLeft(index: number): SafeStyle {
-        let calculatedIndex;
+        if(document.dir.toLowerCase() === 'rtl')
+            return;
+        return this.calculateThumbnailPosition(index);
+    }
+    
+    getThumbnailRight(index: number): SafeStyle {
+        if(document.dir.toLowerCase() === 'ltr')
+            return;
+        return this.calculateThumbnailPosition(index);
+    }
 
+    calculateThumbnailPosition(index: number): SafeStyle {
+        let calculatedIndex;
+        
         if (this.order === NgxGalleryOrder.Column) {
             calculatedIndex = Math.floor(index / this.rows);
         }
