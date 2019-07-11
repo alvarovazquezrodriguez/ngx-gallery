@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-    selector: 'gallery-action',
+    moduleId: module.id,
+    selector: 'o-gallery-action',
     templateUrl: './gallery-action.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

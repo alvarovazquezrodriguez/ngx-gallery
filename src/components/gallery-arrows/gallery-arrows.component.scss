@@ -1,4 +1,4 @@
-.ngx-gallery-arrow-wrapper {
+.o-ngx-gallery-arrow-wrapper {
     position: absolute;
     height: 100%;
     width: 1px;
@@ -7,33 +7,33 @@
     table-layout: fixed;
 }
 
-.ngx-gallery-arrow-left {
+.o-ngx-gallery-arrow-left {
     left: 0px;
 }
 
-.ngx-gallery-arrow-right {
+.o-ngx-gallery-arrow-right {
     right: 0px;
 }
 
-.ngx-gallery-arrow {
+.o-ngx-gallery-arrow {
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
 
-    &.ngx-gallery-disabled {
+    &.o-ngx-gallery-disabled {
         opacity: 0.6;
         cursor: default;
     }
 }
 
-.ngx-gallery-arrow-left {
-    .ngx-gallery-arrow {
+.o-ngx-gallery-arrow-left {
+    .o-ngx-gallery-arrow {
         left: 10px;
     }
 }
 
-.ngx-gallery-arrow-right {
-    .ngx-gallery-arrow {
+.o-ngx-gallery-arrow-right {
+    .o-ngx-gallery-arrow {
         right: 10px;
     }
 }

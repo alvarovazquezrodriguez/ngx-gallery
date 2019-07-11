@@ -4,14 +4,14 @@
     position: relative;
 }
 
-.ngx-gallery-thumbnails-wrapper {
+.o-ngx-gallery-thumbnails-wrapper {
     width: 100%;
     height: 100%;
     position: absolute;
     overflow: hidden;
 }
 
-.ngx-gallery-thumbnails {
+.o-ngx-gallery-thumbnails {
     height: 100%;
     width: 100%;
     position: absolute;
@@ -20,7 +20,7 @@
     transition: transform 0.5s ease-in-out;
     will-change: transform;
 
-    .ngx-gallery-thumbnail {
+    .o-ngx-gallery-thumbnail {
         position: absolute;
         height: 100%;
         background-position: center;
@@ -29,15 +29,15 @@
     }
 }
 
-.ngx-gallery-thumbnail-size-cover .ngx-gallery-thumbnails .ngx-gallery-thumbnail {
+.o-ngx-gallery-thumbnail-size-cover .o-ngx-gallery-thumbnails .o-ngx-gallery-thumbnail {
     background-size: cover;
 }
 
-.ngx-gallery-thumbnail-size-contain .ngx-gallery-thumbnails .ngx-gallery-thumbnail {
+.o-ngx-gallery-thumbnail-size-contain .o-ngx-gallery-thumbnails .o-ngx-gallery-thumbnail {
     background-size: contain;
 }
 
-.ngx-gallery-remaining-count-overlay {
+.o-ngx-gallery-remaining-count-overlay {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -46,7 +46,7 @@
     background-color: rgba(0, 0, 0, .4);
 }
 
-.ngx-gallery-remaining-count {
+.o-ngx-gallery-remaining-count {
     position: absolute;
     top: 50%;
     left: 50%;

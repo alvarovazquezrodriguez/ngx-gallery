@@ -13,7 +13,8 @@ import { GalleryLayout } from '../../models/gallery-layout.model';
 import { GalleryOrderedImage } from '../../models/gallery-ordered-image.model';
 
 @Component({
-    selector: 'gallery',
+    moduleId: module.id,
+    selector: 'o-gallery',
     templateUrl: './gallery.component.html',
     styleUrls: ['./gallery.component.scss'],
     providers: [GalleryHelperService]

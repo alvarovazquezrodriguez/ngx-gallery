@@ -1,7 +1,8 @@
 import { Component, Input, Output, EventEmitter, } from '@angular/core';
 
 @Component({
-    selector: 'gallery-bullets',
+    moduleId: module.id,
+    selector: 'o-gallery-bullets',
     templateUrl: './gallery-bullets.component.html',
     styleUrls: ['./gallery-bullets.component.scss']
 })

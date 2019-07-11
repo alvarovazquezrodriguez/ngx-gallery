@@ -7,7 +7,8 @@ import { GalleryAnimation } from '../../models/gallery-animation.model';
 import { GalleryAction } from '../../models/gallery-action.model';
 
 @Component({
-    selector: 'gallery-image',
+    moduleId: module.id,
+    selector: 'o-gallery-image',
     templateUrl: './gallery-image.component.html',
     styleUrls: ['./gallery-image.component.scss']
 })

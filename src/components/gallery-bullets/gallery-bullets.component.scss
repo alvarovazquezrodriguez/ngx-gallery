@@ -8,7 +8,7 @@
     padding: 10px;
 }
 
-.ngx-gallery-bullet {
+.o-ngx-gallery-bullet {
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -20,7 +20,7 @@
     }
 
     &:hover,
-    &.ngx-gallery-active {
+    &.o-ngx-gallery-active {
         background: black;
     }
 }

@@ -6,7 +6,8 @@ import { GalleryOrder } from '../../models/gallery-order.model';
 import { GalleryAction } from '../../models/gallery-action.model';
 
 @Component({
-    selector: 'gallery-thumbnails',
+    moduleId: module.id,
+    selector: 'o-gallery-thumbnails',
     templateUrl: './gallery-thumbnails.component.html',
     styleUrls: ['./gallery-thumbnails.component.scss']
 })

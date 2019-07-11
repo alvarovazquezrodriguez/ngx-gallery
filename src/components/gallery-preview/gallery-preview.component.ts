@@ -6,7 +6,8 @@ import { GalleryAction } from '../../models/gallery-action.model';
 import { GalleryHelperService } from '../../services/gallery-helper.service';
 
 @Component({
-    selector: 'gallery-preview',
+    moduleId: module.id,
+    selector: 'o-gallery-preview',
     templateUrl: './gallery-preview.component.html',
     styleUrls: ['./gallery-preview.component.scss']
 })
