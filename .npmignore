@@ -1,34 +1,35 @@
-# Node
+#################
+## Misc
+#################
+**/.DS_Store
+nbproject
+manifest.mf
+build.xml
 node_modules/*
 npm-debug.log
-docs/*
-# DO NOT IGNORE TYPESCRIPT FILES FOR NPM
-# TypeScript
-# *.js
-# *.map
-# *.d.ts
+coverage
+*.ts
+!*.d.ts
+tests
+typings
+typings.json
+.github
+!*.metadata.json
+!bundles/*.js
+*.tgz
 
-# JetBrains
-.idea
-.project
-.settings
-.idea/*
-*.iml
+############
+## Windows
+############
 
-# VS Code
-.vscode/*
-
-# Windows
+# Windows image file caches
 Thumbs.db
+
+# Folder config file
 Desktop.ini
 
-# Mac
-.DS_Store
-**/.DS_Store
+############
+## Mac
+############
 
-# Ngc generated files
-**/*.ngfactory.ts
-
-# Library files
-src/*
-build/*
+# Mac crap

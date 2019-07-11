@@ -1,38 +1,27 @@
-# Node
-node_modules/*
+# compiled output
+/dist
+/tmp
+/out
+/src/**/*.css
+o-gallery.css
+
+# dependencies
+/node_modules
+/typings
+
+# IDEs and editors
+/.svn
+/.vscode
+/.editorconfig
+
+# misc
+/.travis.yml
 npm-debug.log
+testem.log
 
-# TypeScript
-src/*.js
-src/*.map
-src/*.d.ts
+# e2e
+/e2e/*.js
+/e2e/*.map
 
-# JetBrains
-.idea
-.project
-.settings
-.idea/*
-*.iml
-
-# VS Code
-.vscode/*
-
-# Windows
-Thumbs.db
-Desktop.ini
-
-# Mac
+#System Files
 .DS_Store
-**/.DS_Store
-
-# Ngc generated files
-**/*.ngfactory.ts
-
-# Build files
-dist/*
-
-# Coverage
-coverage/*
-
-# Playground tmp files
-.playground
