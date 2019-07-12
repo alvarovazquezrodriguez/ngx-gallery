@@ -6,6 +6,7 @@ nbproject
 manifest.mf
 build.xml
 node_modules/*
+demo_gallery/*
 npm-debug.log
 coverage
 *.ts

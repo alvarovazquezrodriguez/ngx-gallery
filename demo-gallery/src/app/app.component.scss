@@ -1,0 +1,25 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1em;
+}
+
+.page-title {
+  //box-shadow: inset 0 -5px 5px -5px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 -3px 8px 0 rgba(0, 0, 0, 0.08);
+  background-color: $primary-color;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  h1 {
+    text-align: center;
+    margin: 2em auto;
+    padding: 16px;
+    font-weight: normal;
+  }
+}
+
+.page-content {
+  position: relative;
+  @extend .container;
+}
