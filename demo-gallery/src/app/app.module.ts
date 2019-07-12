@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
-import { OGalleryModule } from '../../../dist'
+import { OGalleryModule } from 'ontimize-web-ngx-gallery';
 import { AppComponent } from './app.component';
 
 @NgModule({

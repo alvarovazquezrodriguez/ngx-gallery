@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GalleryOptions, GalleryImage, GalleryAnimation } from '../../../dist/';
+import { GalleryOptions, GalleryImage, GalleryAnimation } from 'ontimize-web-ngx-gallery';
 
 @Component({
     selector: 'app-root',

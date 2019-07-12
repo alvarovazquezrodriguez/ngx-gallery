@@ -16,6 +16,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ontimize-web-ngx-gallery": [
+        "C:/Users/alvar/Desktop/Practicas_Imatia/ngx-gallery/dist"
+      ],
+      "ontimize-web-ngx-gallery/*": [
+        "C:/Users/alvar/Desktop/Practicas_Imatia/ngx-gallery/dist/*"
+      ]
+    }
   }
 }
