@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule } from '@angular/forms';
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { OCustomMaterialModule } from 'ontimize-web-ngx';
 
@@ -22,9 +20,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
 @NgModule({
     imports: [
         CommonModule,
-        FormsModule,
-        OCustomMaterialModule,
-        FlexLayoutModule,
+        OCustomMaterialModule
     ],
     declarations: [ OGALLERY_DIRECTIVES ],
     exports: [ OGALLERY_DIRECTIVES ],

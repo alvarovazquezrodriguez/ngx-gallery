@@ -2,6 +2,7 @@
 /dist
 /tmp
 /out
+/demo-app/
 /src/**/*.css
 o-gallery.css
 

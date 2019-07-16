@@ -74,7 +74,7 @@ function compileSass(path, ext, file, callback) {
  * @see  https://github.com/ludohenin/gulp-inline-ng2-template
  */
 const INLINE_TEMPLATES_CONF = {
-  SRC: ['./**/*.ts', '!./tmp/**/*', '!./node_modules/**/*', '!./demo-gallery/**/*' , '!./custom-typings.d.ts'],
+  SRC: ['./**/*.ts', '!./tmp/**/*', '!./node_modules/**/*', '!./demo-app/**/*' , '!./custom-typings.d.ts'],
   DIST: './tmp',
   CONFIG: {
     base: '.',

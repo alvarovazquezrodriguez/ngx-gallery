@@ -140,7 +140,7 @@ export class GalleryOptions implements IGalleryOptions {
         this.previewArrows = use(obj.previewArrows, true);
         this.previewArrowsAutoHide = use(obj.previewArrowsAutoHide, false);
         this.previewSwipe = use(obj.previewSwipe, false);
-        this.previewFullscreen = use(obj.previewFullscreen, false);
+        this.previewFullscreen = use(obj.previewFullscreen, true);
         this.previewForceFullscreen = use(obj.previewForceFullscreen, false);
         this.previewCloseOnClick = use(obj.previewCloseOnClick, false);
         this.previewCloseOnEsc = use(obj.previewCloseOnEsc, false);
@@ -150,25 +150,25 @@ export class GalleryOptions implements IGalleryOptions {
         this.previewAutoPlayInterval = use(obj.previewAutoPlayInterval, 2000);
         this.previewAutoPlayPauseOnHover = use(obj.previewAutoPlayPauseOnHover, false);
         this.previewInfinityMove = use(obj.previewInfinityMove, false);
-        this.previewZoom = use(obj.previewZoom, false);
+        this.previewZoom = use(obj.previewZoom, true);
         this.previewZoomStep = use(obj.previewZoomStep, 0.1);
         this.previewZoomMax = use(obj.previewZoomMax, 2);
         this.previewZoomMin = use(obj.previewZoomMin, 0.5);
-        this.previewRotate = use(obj.previewRotate, false);
+        this.previewRotate = use(obj.previewRotate, true);
         this.previewDownload = use(obj.previewDownload, false);
         this.previewCustom = use(obj.previewCustom, undefined);
         this.previewBullets = use(obj.previewBullets, false);
 
-        this.arrowPrevIcon = use(obj.arrowPrevIcon, 'fa fa-arrow-circle-left');
-        this.arrowNextIcon = use(obj.arrowNextIcon, 'fa fa-arrow-circle-right');
-        this.closeIcon = use(obj.closeIcon, 'fa fa-times-circle');
-        this.fullscreenIcon = use(obj.fullscreenIcon, 'fa fa-arrows-alt');
-        this.spinnerIcon = use(obj.spinnerIcon, 'fa fa-spinner fa-pulse fa-3x fa-fw');
-        this.zoomInIcon = use(obj.zoomInIcon, 'fa fa-search-plus');
-        this.zoomOutIcon = use(obj.zoomOutIcon, 'fa fa-search-minus');
-        this.rotateLeftIcon = use(obj.rotateLeftIcon, 'fa fa-undo');
-        this.rotateRightIcon = use(obj.rotateRightIcon, 'fa fa-repeat');
-        this.downloadIcon = use(obj.downloadIcon, 'fa fa-arrow-circle-down');
+        this.arrowPrevIcon = use(obj.arrowPrevIcon, 'undo');
+        this.arrowNextIcon = use(obj.arrowNextIcon, 'redo');
+        this.closeIcon = use(obj.closeIcon, 'close');
+        this.fullscreenIcon = use(obj.fullscreenIcon, 'fullscreen');
+        this.spinnerIcon = use(obj.spinnerIcon, 'loop');
+        this.zoomInIcon = use(obj.zoomInIcon, 'zoom_in');
+        this.zoomOutIcon = use(obj.zoomOutIcon, 'zoom_out');
+        this.rotateLeftIcon = use(obj.rotateLeftIcon, 'rotate_left');
+        this.rotateRightIcon = use(obj.rotateRightIcon, 'rotate_right');
+        this.downloadIcon = use(obj.downloadIcon, 'save');
 
         if (obj && obj.actions && obj.actions.length) {
             obj.actions = obj.actions.map(action => new GalleryAction(action));

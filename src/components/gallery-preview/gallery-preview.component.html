@@ -6,7 +6,7 @@
         <o-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled"
             [titleText]="action.titleText" (onClick)="action.onClick($event, index)"></o-gallery-action>
         <a *ngIf="download && src" [href]="src" class="o-ngx-gallery-icon" aria-hidden="true" download>
-            <i class="o-ngx-gallery-icon-content {{ downloadIcon }}"></i>
+            <i class="o-ngx-gallery-icon-content">{{ downloadIcon }}</i>
         </a>
         <o-gallery-action *ngIf="zoom" [icon]="zoomOutIcon" [disabled]="!canZoomOut()" (onClick)="zoomOut()">
         </o-gallery-action>
@@ -14,13 +14,13 @@
         </o-gallery-action>
         <o-gallery-action *ngIf="rotate" [icon]="rotateLeftIcon" (onClick)="rotateLeft()"></o-gallery-action>
         <o-gallery-action *ngIf="rotate" [icon]="rotateRightIcon" (onClick)="rotateRight()"></o-gallery-action>
-        <o-gallery-action *ngIf="fullscreen" [icon]="'o-ngx-gallery-fullscreen ' + fullscreenIcon"
+        <o-gallery-action *ngIf="fullscreen" [icon]="fullscreenIcon"
             (onClick)="manageFullscreen()"></o-gallery-action>
-        <o-gallery-action [icon]="'o-ngx-gallery-close ' + closeIcon" (onClick)="close()"></o-gallery-action>
+        <o-gallery-action [icon]="closeIcon" (onClick)="close()"></o-gallery-action>
     </div>
 </div>
 <div class="ngx-spinner-wrapper o-ngx-gallery-center" [class.o-ngx-gallery-active]="showSpinner">
-    <i class="o-ngx-gallery-icon o-ngx-gallery-spinner {{spinnerIcon}}" aria-hidden="true"></i>
+    <i class="o-ngx-gallery-icon o-ngx-gallery-spinner" aria-hidden="true">{{spinnerIcon}}</i>
 </div>
 <div class="o-ngx-gallery-preview-wrapper" (click)="closeOnClick && close()" (mouseup)="mouseUpHandler($event)"
     (mousemove)="mouseMoveHandler($event)" (touchend)="mouseUpHandler($event)" (touchmove)="mouseMoveHandler($event)">

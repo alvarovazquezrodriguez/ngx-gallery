@@ -1,4 +1,5 @@
 :host {
+    font-family: 'Material Icons';
     display: inline-block;
 
     & > * {
@@ -28,6 +29,7 @@
         }
 
         .o-ngx-gallery-icons-wrapper .o-ngx-gallery-icon {
+            font-family: 'Material Icons';
             position: relative;
             margin-right: 5px;
             margin-top: 5px;
@@ -48,21 +50,21 @@
     }
 
     .o-ngx-gallery-layout.thumbnails-top {
-        ngx-gallery-image {
+        o-gallery-image {
             order: 2;
         }
 
-        ngx-gallery-thumbnails {
+        o-gallery-thumbnails {
             order: 1;
         }
     }
 
     .o-ngx-gallery-layout.thumbnails-bottom {
-        ngx-gallery-image {
+        o-gallery-image {
             order: 1;
         }
 
-        ngx-gallery-thumbnails {
+        o-gallery-thumbnails {
             order: 2;
         }
     }
