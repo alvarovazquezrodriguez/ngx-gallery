@@ -1,19 +1,32 @@
-import { Component, Input, Output, EventEmitter, } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
+import { InputConverter } from 'ontimize-web-ngx';
 
 @Component({
     moduleId: module.id,
     selector: 'o-gallery-arrows',
     templateUrl: './gallery-arrows.component.html',
-    styleUrls: ['./gallery-arrows.component.scss']
+    styleUrls: ['./gallery-arrows.component.scss'],
+    inputs: [
+        'prevDisabled : prev-disabled',
+        'nextDisabled : next-disabled',
+        'arrowPrevIcon : arrow-prev-icon',
+        'arrowNextIcon : arrow-next-icon'
+    ],
+    outputs: [
+        'onPrevClick',
+        'onNextClick'
+    ]
 })
 export class GalleryArrowsComponent {
-    @Input() prevDisabled: boolean;
-    @Input() nextDisabled: boolean;
-    @Input() arrowPrevIcon: string;
-    @Input() arrowNextIcon: string;
+    @InputConverter()
+    public prevDisabled: boolean;
+    @InputConverter()
+    public nextDisabled: boolean;
+    public arrowPrevIcon: string;
+    public arrowNextIcon: string;
 
-    @Output() onPrevClick = new EventEmitter();
-    @Output() onNextClick = new EventEmitter();
+    onPrevClick = new EventEmitter();
+    onNextClick = new EventEmitter();
 
     handlePrevClick(): void {
         this.onPrevClick.emit();

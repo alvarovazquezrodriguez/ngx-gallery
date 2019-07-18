@@ -1,7 +1,7 @@
-import { ChangeDetectorRef, Component, Input, Output, EventEmitter, OnInit,
+import { ChangeDetectorRef, Component, EventEmitter, OnInit,
     OnChanges, SimpleChanges, ElementRef, HostListener, ViewChild, Renderer2 } from '@angular/core';
 import { SafeResourceUrl, DomSanitizer, SafeUrl, SafeStyle } from '@angular/platform-browser';
-
+import { InputConverter } from 'ontimize-web-ngx';
 import { GalleryAction } from '../../models/gallery-action.model';
 import { GalleryHelperService } from '../../services/gallery-helper.service';
 
@@ -9,7 +9,48 @@ import { GalleryHelperService } from '../../services/gallery-helper.service';
     moduleId: module.id,
     selector: 'o-gallery-preview',
     templateUrl: './gallery-preview.component.html',
-    styleUrls: ['./gallery-preview.component.scss']
+    styleUrls: ['./gallery-preview.component.scss'],
+    inputs: [
+    'images',
+    'descriptions',
+    'showDescription : show-description',
+    'arrows',
+    'arrowsAutoHide : arrows-auto-hide',
+    'swipe',
+    'fullscreen',
+    'forceFullscreen : force-fullscreen',
+    'closeOnClick : close-on-click',
+    'closeOnEsc : close-on-esc',
+    'keyboardNavigation : keyboard-navigation',
+    'arrowPrevIcon : arrow-prev-icon',
+    'arrowNextIcon : arrow-next-icon',
+    'closeIcon : close-icon',
+    'fullscreenIcon : fullscreen-icon',
+    'spinnerIcon : spinner-icon',
+    'autoPlay : auto-play',
+    'autoPlayInterval : auto-play-interval',
+    'autoPlayPauseOnHover : auto-play-pause-on-hover',
+    'infinityMove : infinity-move',
+    'zoom',
+    'zoomStep : zoom-step',
+    'zoomMax : zoom-max',
+    'zoomMin : zoom-min',
+    'zoomInIcon : zoom-in-icon',
+    'zoomOutIcon : zoom-out-icon',
+    'animation',
+    'actions',
+    'rotate',
+    'rotateLeftIcon : rotate-left-icon',
+    'rotateRightIcon : rotate-right-icon',
+    'download',
+    'downloadIcon : download-icon',
+    'bullets'
+    ],
+    outputs: [
+        'onOpen',
+        'onClose',
+        'onActiveChange'
+    ]
 })
 
 export class GalleryPreviewComponent implements OnInit, OnChanges {
@@ -26,44 +67,60 @@ export class GalleryPreviewComponent implements OnInit, OnChanges {
     rotateValue = 0;
     index = 0;
 
-    @Input() images: string[] | SafeResourceUrl[];
-    @Input() descriptions: string[];
-    @Input() showDescription: boolean;
-    @Input() arrows: boolean;
-    @Input() arrowsAutoHide: boolean;
-    @Input() swipe: boolean;
-    @Input() fullscreen: boolean;
-    @Input() forceFullscreen: boolean;
-    @Input() closeOnClick: boolean;
-    @Input() closeOnEsc: boolean;
-    @Input() keyboardNavigation: boolean;
-    @Input() arrowPrevIcon: string;
-    @Input() arrowNextIcon: string;
-    @Input() closeIcon: string;
-    @Input() fullscreenIcon: string;
-    @Input() spinnerIcon: string;
-    @Input() autoPlay: boolean;
-    @Input() autoPlayInterval: number;
-    @Input() autoPlayPauseOnHover: boolean;
-    @Input() infinityMove: boolean;
-    @Input() zoom: boolean;
-    @Input() zoomStep: number;
-    @Input() zoomMax: number;
-    @Input() zoomMin: number;
-    @Input() zoomInIcon: string;
-    @Input() zoomOutIcon: string;
-    @Input() animation: boolean;
-    @Input() actions: GalleryAction[];
-    @Input() rotate: boolean;
-    @Input() rotateLeftIcon: string;
-    @Input() rotateRightIcon: string;
-    @Input() download: boolean;
-    @Input() downloadIcon: string;
-    @Input() bullets: string;
+    public images: string[] | SafeResourceUrl[];
+    public descriptions: string[];
+    @InputConverter()
+    public showDescription: boolean;
+    @InputConverter()
+    public arrows: boolean;
+    @InputConverter()
+    public arrowsAutoHide: boolean;
+    @InputConverter()
+    public swipe: boolean;
+    @InputConverter()
+    public fullscreen: boolean;
+    @InputConverter()
+    public forceFullscreen: boolean;
+    @InputConverter()
+    public closeOnClick: boolean;
+    @InputConverter()
+    public closeOnEsc: boolean;
+    @InputConverter()
+    public keyboardNavigation: boolean;
+    public arrowPrevIcon: string;
+    public arrowNextIcon: string;
+    public closeIcon: string;
+    public fullscreenIcon: string;
+    public spinnerIcon: string;
+    @InputConverter()
+    public autoPlay: boolean;
+    public autoPlayInterval: number;
+    @InputConverter()
+    public autoPlayPauseOnHover: boolean;
+    @InputConverter()
+    public infinityMove: boolean;
+    @InputConverter()
+    public zoom: boolean;
+    public zoomStep: number;
+    public zoomMax: number;
+    public zoomMin: number;
+    public zoomInIcon: string;
+    public zoomOutIcon: string;
+    @InputConverter()
+    public animation: boolean;
+    public actions: GalleryAction[];
+    @InputConverter()
+    public rotate: boolean;
+    public rotateLeftIcon: string;
+    public rotateRightIcon: string;
+    @InputConverter()
+    public download: boolean;
+    public downloadIcon: string;
+    public bullets: string;
 
-    @Output() onOpen = new EventEmitter();
-    @Output() onClose = new EventEmitter();
-    @Output() onActiveChange = new EventEmitter<number>();
+    onOpen = new EventEmitter();
+    onClose = new EventEmitter();
+    onActiveChange = new EventEmitter<number>();
 
     @ViewChild('previewImage') previewImage: ElementRef;
 

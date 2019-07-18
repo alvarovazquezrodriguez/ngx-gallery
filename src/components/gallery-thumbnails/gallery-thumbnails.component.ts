@@ -1,6 +1,6 @@
-import { Component, Input, Output, EventEmitter, HostListener, OnChanges, SimpleChanges, ElementRef } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnChanges, SimpleChanges, ElementRef } from '@angular/core';
 import { DomSanitizer, SafeStyle, SafeResourceUrl } from '@angular/platform-browser';
-
+import { InputConverter } from 'ontimize-web-ngx';
 import { GalleryHelperService } from '../../services/gallery-helper.service';
 import { GalleryOrder } from '../../models/gallery-order.model';
 import { GalleryAction } from '../../models/gallery-action.model';
@@ -9,7 +9,32 @@ import { GalleryAction } from '../../models/gallery-action.model';
     moduleId: module.id,
     selector: 'o-gallery-thumbnails',
     templateUrl: './gallery-thumbnails.component.html',
-    styleUrls: ['./gallery-thumbnails.component.scss']
+    styleUrls: ['./gallery-thumbnails.component.scss'],
+    inputs: [
+        'images',
+        'links',
+        'labels',
+        'linkTarget : link-target',
+        'columns',
+        'rows',
+        'arrows',
+        'arrowsAutoHide : arrows-auto-hide',
+        'margin',
+        'selectedIndex : selected-index',
+        'clickable',
+        'swipe',
+        'size',
+        'arrowPrevIcon : arrow-prev-icon',
+        'arrowNextIcon : arrow-next-icon',
+        'moveSize : move-size',
+        'order',
+        'remainingCount : remaining-count',
+        'lazyLoading : lazy-loading',
+        'actions'
+    ],
+    outputs: [
+        'onActiveChange'
+    ]
 })
 
 export class GalleryThumbnailsComponent implements OnChanges {
@@ -21,28 +46,34 @@ export class GalleryThumbnailsComponent implements OnChanges {
 
     minStopIndex = 0;
 
-    @Input() images: string[] | SafeResourceUrl[];
-    @Input() links: string[];
-    @Input() labels: string[];
-    @Input() linkTarget: string;
-    @Input() columns: number;
-    @Input() rows: number;
-    @Input() arrows: boolean;
-    @Input() arrowsAutoHide: boolean;
-    @Input() margin: number;
-    @Input() selectedIndex: number;
-    @Input() clickable: boolean;
-    @Input() swipe: boolean;
-    @Input() size: string;
-    @Input() arrowPrevIcon: string;
-    @Input() arrowNextIcon: string;
-    @Input() moveSize: number;
-    @Input() order: number;
-    @Input() remainingCount: boolean;
-    @Input() lazyLoading: boolean;
-    @Input() actions: GalleryAction[];
+    public images: string[] | SafeResourceUrl[];
+    public links: string[];
+    public labels: string[];
+    public linkTarget: string;
+    public columns: number;
+    public rows: number;
+    @InputConverter()
+    public arrows: boolean;
+    @InputConverter()
+    public arrowsAutoHide: boolean;
+    public margin: number;
+    public selectedIndex: number;
+    @InputConverter()
+    public clickable: boolean;
+    @InputConverter()
+    public swipe: boolean;
+    public size: string;
+    public arrowPrevIcon: string;
+    public arrowNextIcon: string;
+    public moveSize: number;
+    public order: number;
+    @InputConverter()
+    public remainingCount: boolean;
+    @InputConverter()
+    public lazyLoading: boolean;
+    public actions: GalleryAction[];
 
-    @Output() onActiveChange = new EventEmitter();
+    onActiveChange = new EventEmitter();
 
     private index = 0;
 

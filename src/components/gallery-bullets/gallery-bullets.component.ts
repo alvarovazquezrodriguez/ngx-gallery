@@ -1,16 +1,23 @@
-import { Component, Input, Output, EventEmitter, } from '@angular/core';
+import { Component, EventEmitter, } from '@angular/core';
 
 @Component({
     moduleId: module.id,
     selector: 'o-gallery-bullets',
     templateUrl: './gallery-bullets.component.html',
-    styleUrls: ['./gallery-bullets.component.scss']
+    styleUrls: ['./gallery-bullets.component.scss'],
+    inputs: [
+        'count',
+        'active'
+    ],
+    outputs: [
+        'onChange'
+    ]
 })
 export class GalleryBulletsComponent {
-    @Input() count: number;
-    @Input() active: number = 0;
+    public count: number;
+    public active: number = 0;
 
-    @Output() onChange = new EventEmitter();
+    onChange = new EventEmitter();
 
     getBullets(): number[] {
         return Array(this.count);

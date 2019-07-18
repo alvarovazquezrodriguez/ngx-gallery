@@ -1,6 +1,6 @@
-import { Component, Input, Output, EventEmitter, HostListener, ElementRef, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, HostListener, ElementRef, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
-
+import { InputConverter } from 'ontimize-web-ngx';
 import { GalleryHelperService } from '../../services/gallery-helper.service';
 import { GalleryOrderedImage } from '../../models/gallery-ordered-image.model';
 import { GalleryAnimation } from '../../models/gallery-animation.model';
@@ -10,31 +10,66 @@ import { GalleryAction } from '../../models/gallery-action.model';
     moduleId: module.id,
     selector: 'o-gallery-image',
     templateUrl: './gallery-image.component.html',
-    styleUrls: ['./gallery-image.component.scss']
+    styleUrls: ['./gallery-image.component.scss'],
+    inputs: [
+        'images',
+        'clickable',
+        'selectedIndex : selected-index',
+        'arrows',
+        'arrowsAutoHide : arrows-auto-hide',
+        'swipe',
+        'animation',
+        'size',
+        'arrowPrevIcon : arrow-prev-icon',
+        'arrowNextIcon : arrow-next-icon',
+        'autoPlay : auto-play',
+        'autoPlayInterval : auto-play-interval',
+        'autoPlayPauseOnHover : auto-play-pause-on-hover',
+        'infinityMove : infinity-move',
+        'lazyLoading : lazy-loading',
+        'actions',
+        'descriptions',
+        'showDescription : show-description',
+        'bullets'
+    ],
+    outputs: [
+        'onClick',
+        'onActiveChange'
+    ]
 })
 export class GalleryImageComponent implements OnInit, OnChanges {
-    @Input() images: GalleryOrderedImage[];
-    @Input() clickable: boolean;
-    @Input() selectedIndex: number;
-    @Input() arrows: boolean;
-    @Input() arrowsAutoHide: boolean;
-    @Input() swipe: boolean;
-    @Input() animation: string;
-    @Input() size: string;
-    @Input() arrowPrevIcon: string;
-    @Input() arrowNextIcon: string;
-    @Input() autoPlay: boolean;
-    @Input() autoPlayInterval: number;
-    @Input() autoPlayPauseOnHover: boolean;
-    @Input() infinityMove: boolean;
-    @Input() lazyLoading: boolean;
-    @Input() actions: GalleryAction[];
-    @Input() descriptions: string[];
-    @Input() showDescription: boolean;
-    @Input() bullets: boolean;
+    public images: GalleryOrderedImage[];
+    @InputConverter()
+    public clickable: boolean;
+    public selectedIndex: number;
+    @InputConverter()
+    public arrows: boolean;
+    @InputConverter()
+    public arrowsAutoHide: boolean;
+    @InputConverter()
+    public swipe: boolean;
+    public animation: string;
+    public size: string;
+    public arrowPrevIcon: string;
+    public arrowNextIcon: string;
+    @InputConverter()
+    public autoPlay: boolean;
+    public autoPlayInterval: number;
+    @InputConverter()
+    public autoPlayPauseOnHover: boolean;
+    @InputConverter()
+    public infinityMove: boolean;
+    @InputConverter()
+    public lazyLoading: boolean;
+    public actions: GalleryAction[];
+    public descriptions: string[];
+    @InputConverter()
+    public showDescription: boolean;
+    @InputConverter()
+    public bullets: boolean;
 
-    @Output() onClick = new EventEmitter();
-    @Output() onActiveChange = new EventEmitter();
+    onClick = new EventEmitter();
+    onActiveChange = new EventEmitter();
 
     canChangeImage = true;
 

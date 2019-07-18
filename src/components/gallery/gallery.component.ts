@@ -1,5 +1,7 @@
-import { Component, Input, HostListener, ViewChild, OnInit,
-    HostBinding, DoCheck, ElementRef, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import {
+    Component, HostListener, ViewChild, OnInit,
+    HostBinding, DoCheck, ElementRef, AfterViewInit, EventEmitter
+} from '@angular/core';
 import { SafeResourceUrl } from '@angular/platform-browser';
 
 import { GalleryPreviewComponent } from '../gallery-preview/gallery-preview.component';
@@ -9,6 +11,7 @@ import { GalleryHelperService } from '../../services/gallery-helper.service';
 
 import { GalleryOptions } from '../../models/gallery-options.model';
 import { GalleryImage } from '../../models/gallery-image.model';
+import { GalleryImageSize } from '../../models/gallery-image-size.model';
 import { GalleryLayout } from '../../models/gallery-layout.model';
 import { GalleryOrderedImage } from '../../models/gallery-ordered-image.model';
 
@@ -17,17 +20,30 @@ import { GalleryOrderedImage } from '../../models/gallery-ordered-image.model';
     selector: 'o-gallery',
     templateUrl: './gallery.component.html',
     styleUrls: ['./gallery.component.scss'],
-    providers: [GalleryHelperService]
+    providers: [GalleryHelperService],
+    inputs: [
+        'options : gallery-options',
+        'images : gallery-images'
+    ],
+    outputs: [
+        'onImagesReady',
+        'onChange',
+        'onPreviewOpen',
+        'onPreviewClose',
+        'onPreviewChange'
+    ]
 })
-export class GalleryComponent implements OnInit, DoCheck, AfterViewInit   {
-    @Input() options: GalleryOptions[];
-    @Input() images: GalleryImage[];
 
-    @Output() imagesReady = new EventEmitter();
-    @Output() change = new EventEmitter<{ index: number; image: GalleryImage; }>();
-    @Output() previewOpen = new EventEmitter();
-    @Output() previewClose = new EventEmitter();
-    @Output() previewChange = new EventEmitter<{ index: number; image: GalleryImage; }>();
+export class GalleryComponent implements OnInit, DoCheck, AfterViewInit {
+
+    public options: GalleryOptions[];
+    public images: GalleryImage[];
+
+    onImagesReady = new EventEmitter();
+    onChange = new EventEmitter<{ index: number; image: GalleryImage; }>();
+    onPreviewOpen = new EventEmitter();
+    onPreviewClose = new EventEmitter();
+    onPreviewChange = new EventEmitter<{ index: number; image: GalleryImage; }>();
 
     smallImages: string[] | SafeResourceUrl[];
     mediumImages: GalleryOrderedImage[];
@@ -56,7 +72,7 @@ export class GalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     @HostBinding('style.height') height: string;
     @HostBinding('style.left') left: string;
 
-    constructor(private myElement: ElementRef, private helperService: GalleryHelperService) {}
+    constructor(private myElement: ElementRef, private helperService: GalleryHelperService) { }
 
     ngOnInit() {
         this.options = this.options.map((opt) => new GalleryOptions(opt));
@@ -70,15 +86,15 @@ export class GalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     }
 
     ngDoCheck(): void {
+        this.setOptions();
         if (this.images !== undefined && (this.images.length !== this.oldImagesLength)
             || (this.images !== this.oldImages)) {
             this.oldImagesLength = this.images.length;
             this.oldImages = this.images;
-            this.setOptions();
             this.setImages();
 
             if (this.images && this.images.length) {
-                this.imagesReady.emit();
+                this.onImagesReady.emit();
             }
 
             if (this.image) {
@@ -127,7 +143,7 @@ export class GalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     getThumbnailsHeight(): string {
         if (this.currentOptions && this.currentOptions.image) {
             return 'calc(' + this.currentOptions.thumbnailsPercent + '% - '
-            + this.currentOptions.thumbnailsMargin + 'px)';
+                + this.currentOptions.thumbnailsMargin + 'px)';
         } else {
             return '100%';
         }
@@ -158,17 +174,17 @@ export class GalleryComponent implements OnInit, DoCheck, AfterViewInit   {
         }
     }
 
-    onPreviewOpen(): void {
-        this.previewOpen.emit();
+    PreviewOpen(): void {
+        this.onPreviewOpen.emit();
 
         if (this.image && this.image.autoPlay) {
             this.image.stopAutoPlay();
         }
     }
 
-    onPreviewClose(): void {
+    PreviewClose(): void {
         this.previewEnabled = false;
-        this.previewClose.emit();
+        this.onPreviewClose.emit();
 
         if (this.image && this.image.autoPlay) {
             this.image.startAutoPlay();
@@ -218,7 +234,7 @@ export class GalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     }
 
     previewSelect(index: number) {
-        this.previewChange.emit({index, image: this.images[index]});
+        this.onPreviewChange.emit({ index, image: this.images[index] });
     }
 
     moveThumbnailsRight() {
@@ -237,6 +253,109 @@ export class GalleryComponent implements OnInit, DoCheck, AfterViewInit   {
         return this.thubmnails.canMoveLeft();
     }
 
+
+    changeThumbPosition(aux: string): void {
+        if (aux === 'Top') {
+            this.options[0].layout = GalleryLayout.ThumbnailsTop;
+            this.options = this.options.slice(0, this.options.length);
+        } else {
+            this.options[0].layout = GalleryLayout.ThumbnailsBottom;
+            this.options = this.options.slice(0, this.options.length);
+        }
+    }
+
+    changeImageSize(aux: string): void {
+        if (aux === 'Cover') {
+            this.options[0].imageSize = GalleryImageSize.Cover;
+            this.options = this.options.slice(0, this.options.length);
+        } else {
+            this.options[0].imageSize = GalleryImageSize.Contain;
+            this.options = this.options.slice(0, this.options.length);
+        }
+    }
+
+    changeThumbnailSize(aux: string): void {
+        if (aux === 'Cover') {
+            this.options[0].thumbnailSize = GalleryImageSize.Cover;
+            this.options = this.options.slice(0, this.options.length);
+        } else {
+            this.options[0].thumbnailSize = GalleryImageSize.Contain;
+            this.options = this.options.slice(0, this.options.length);
+        }
+    }
+
+    changeImage(): void {
+        this.options[0].image = !(this.options[0].image);
+        this.options = this.options.slice(0, this.options.length);
+    }
+
+    changeThumbnails(): void {
+        this.options[0].thumbnails = !(this.options[0].thumbnails);
+        this.options = this.options.slice(0, this.options.length);
+    }
+
+    changePreview(): void {
+        this.options[0].preview = !(this.options[0].preview);
+        this.options = this.options.slice(0, this.options.length);
+    }
+
+    changeImageArrows(): void {
+        this.options[0].imageArrows = !(this.options[0].imageArrows);
+        this.options = this.options.slice(0, this.options.length);
+    }
+
+    changePreviewArrows(): void {
+        this.options[0].previewArrows = !(this.options[0].previewArrows);
+        this.options = this.options.slice(0, this.options.length);
+    }
+
+    changePreviewAutoPlay(): void {
+        this.options[0].previewAutoPlay = !(this.options[0].previewAutoPlay);
+        this.options = this.options.slice(0, this.options.length);
+    }
+
+
+    changePreviewDescription(): void {
+        this.options[0].previewDescription = !(this.options[0].previewDescription);
+        this.options = this.options.slice(0, this.options.length);
+    }
+
+    changePreviewFullscreen(): void {
+        this.options[0].previewFullscreen = !(this.options[0].previewFullscreen);
+        this.options = this.options.slice(0, this.options.length);
+    }
+
+    changePreviewCloseonClick(): void {
+        this.options[0].previewCloseOnClick = !(this.options[0].previewCloseOnClick);
+        this.options = this.options.slice(0, this.options.length);
+    }
+
+    changePreviewCloseonEsc(): void {
+        this.options[0].previewCloseOnEsc = !(this.options[0].previewCloseOnEsc);
+        this.options = this.options.slice(0, this.options.length);
+    }
+
+    changePreviewKeyboardNavigation(): void {
+        this.options[0].previewKeyboardNavigation = !(this.options[0].previewKeyboardNavigation);
+        this.options = this.options.slice(0, this.options.length);
+    }
+
+    changePreviewZoom(): void {
+        this.options[0].previewZoom = !(this.options[0].previewZoom);
+        this.options = this.options.slice(0, this.options.length);
+    }
+
+    changePreviewRotate(): void {
+        this.options[0].previewRotate = !(this.options[0].previewRotate);
+        this.options = this.options.slice(0, this.options.length);
+    }
+
+    changePreviewDownload(): void {
+        this.options[0].previewDownload = !(this.options[0].previewDownload);
+        this.options = this.options.slice(0, this.options.length);
+    }
+
+
     private resetThumbnails() {
         if (this.thubmnails) {
             this.thubmnails.reset(<number>this.currentOptions.startIndex);
@@ -246,7 +365,7 @@ export class GalleryComponent implements OnInit, DoCheck, AfterViewInit   {
     private select(index: number) {
         this.selectedIndex = index;
 
-        this.change.emit({
+        this.onChange.emit({
             index,
             image: this.images[index]
         });

@@ -1,17 +1,27 @@
-import { ChangeDetectionStrategy, Component, Input, Output, EventEmitter } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter } from '@angular/core';
+import { InputConverter } from 'ontimize-web-ngx';
 
 @Component({
     moduleId: module.id,
     selector: 'o-gallery-action',
     templateUrl: './gallery-action.component.html',
+    inputs: [
+        'icon',
+        'disabled',
+        'titleText'
+    ],
+    outputs: [
+        'onClick'
+    ],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GalleryActionComponent {
-    @Input() icon: string;
-    @Input() disabled = false;
-    @Input() titleText = '';
+    public icon: string;
+    @InputConverter()
+    public disabled: boolean = false;
+    public titleText: string = '';
 
-    @Output() onClick: EventEmitter<Event> = new EventEmitter();
+    onClick: EventEmitter<Event> = new EventEmitter();
 
     handleClick(event: Event) {
         if (!this.disabled) {

@@ -29,5 +29,5 @@
 <o-gallery-bullets *ngIf="bullets" [count]="images.length" [active]="selectedIndex" (onChange)="show($event)">
 </o-gallery-bullets>
 <o-gallery-arrows class="o-ngx-gallery-image-size-{{size}}" *ngIf="arrows" (onPrevClick)="showPrev()"
-    (onNextClick)="showNext()" [prevDisabled]="!canShowPrev()" [nextDisabled]="!canShowNext()"
-    [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></o-gallery-arrows>
+    (onNextClick)="showNext()" [prev-disabled]="!canShowPrev()" [next-disabled]="!canShowNext()"
+    [arrow-prev-icon]="arrowPrevIcon" [arrow-next-icon]="arrowNextIcon"></o-gallery-arrows>
