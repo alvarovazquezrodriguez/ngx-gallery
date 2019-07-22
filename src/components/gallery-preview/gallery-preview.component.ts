@@ -483,7 +483,9 @@ export class GalleryPreviewComponent implements OnInit, OnChanges {
                 this.changeDetectorRef.markForCheck();
             // tslint:disable-next-line: no-empty
             } else if (this.type === 'video') {
-
+                this.loading = false;
+                this.startAutoPlay();
+                this.changeDetectorRef.markForCheck();
             } else {
                 setTimeout(() => {
                     if (this.loading) {

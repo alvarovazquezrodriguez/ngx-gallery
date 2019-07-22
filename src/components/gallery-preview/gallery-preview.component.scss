@@ -44,6 +44,26 @@
     }
 }
 
+.o-ngx-gallery-preview-video {
+    max-width: 90%;
+    max-height: 90%;
+    user-select: none;
+    transition: transform .5s;
+
+    &.animation {
+        transition: opacity 0.5s linear, transform .5s;
+    }
+
+    &.o-ngx-gallery-active {
+        opacity: 1;
+    }
+
+    &.o-ngx-gallery-grab {
+        cursor: grab;
+        cursor: -webkit-grab;
+    }
+}
+
 .o-ngx-gallery-icon.o-ngx-gallery-spinner {
     font-family: 'Material Icons';
     font-size: 50px;

@@ -89,8 +89,8 @@ export class GalleryOptions implements IGalleryOptions {
         }
 
         this.breakpoint = use(obj.breakpoint, undefined);
-        this.width = use(obj.width, '500px');
-        this.height = use(obj.height, '400px');
+        this.width = use(obj.width, '800px');
+        this.height = use(obj.height, '600px');
         this.fullWidth = use(obj.fullWidth, false);
         this.layout = use(obj.layout, GalleryLayout.ThumbnailsBottom);
         this.startIndex = use(obj.startIndex, 0);
@@ -136,15 +136,15 @@ export class GalleryOptions implements IGalleryOptions {
         this.thumbnailActions = use(obj.thumbnailActions, []);
 
         this.preview = use(obj.preview, true);
-        this.previewDescription = use(obj.previewDescription, true);
+        this.previewDescription = use(obj.previewDescription, false);
         this.previewArrows = use(obj.previewArrows, true);
         this.previewArrowsAutoHide = use(obj.previewArrowsAutoHide, false);
         this.previewSwipe = use(obj.previewSwipe, false);
         this.previewFullscreen = use(obj.previewFullscreen, true);
         this.previewForceFullscreen = use(obj.previewForceFullscreen, false);
-        this.previewCloseOnClick = use(obj.previewCloseOnClick, false);
-        this.previewCloseOnEsc = use(obj.previewCloseOnEsc, false);
-        this.previewKeyboardNavigation = use(obj.previewKeyboardNavigation, false);
+        this.previewCloseOnClick = use(obj.previewCloseOnClick, true);
+        this.previewCloseOnEsc = use(obj.previewCloseOnEsc, true);
+        this.previewKeyboardNavigation = use(obj.previewKeyboardNavigation, true);
         this.previewAnimation = use(obj.previewAnimation, true);
         this.previewAutoPlay = use(obj.previewAutoPlay, false);
         this.previewAutoPlayInterval = use(obj.previewAutoPlayInterval, 2000);
@@ -155,7 +155,7 @@ export class GalleryOptions implements IGalleryOptions {
         this.previewZoomMax = use(obj.previewZoomMax, 2);
         this.previewZoomMin = use(obj.previewZoomMin, 0.5);
         this.previewRotate = use(obj.previewRotate, true);
-        this.previewDownload = use(obj.previewDownload, false);
+        this.previewDownload = use(obj.previewDownload, true);
         this.previewCustom = use(obj.previewCustom, undefined);
         this.previewBullets = use(obj.previewBullets, false);
 

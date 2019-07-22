@@ -253,6 +253,15 @@ export class GalleryComponent implements OnInit, DoCheck, AfterViewInit {
         return this.thubmnails.canMoveLeft();
     }
 
+    changeWidth(newWidth: string) {
+        this.options[0].width = newWidth;
+        this.options = this.options.slice(0, this.options.length);
+    }
+
+    changeHeight(newHeight: string) {
+        this.options[0].height = newHeight;
+        this.options = this.options.slice(0, this.options.length);
+    }
 
     changeThumbPosition(aux: string): void {
         if (aux === 'Top') {
