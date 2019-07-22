@@ -37,6 +37,7 @@ import { GalleryOrderedImage } from '../../models/gallery-ordered-image.model';
 export class GalleryComponent implements OnInit, DoCheck, AfterViewInit {
 
     public options: GalleryOptions[];
+    optionsLength: number;
     public images: GalleryImage[];
 
     onImagesReady = new EventEmitter();
@@ -75,6 +76,7 @@ export class GalleryComponent implements OnInit, DoCheck, AfterViewInit {
     constructor(private myElement: ElementRef, private helperService: GalleryHelperService) { }
 
     ngOnInit() {
+        this.optionsLength = this.options.length;
         this.options = this.options.map((opt) => new GalleryOptions(opt));
         this.sortOptions();
         this.setBreakpoint();
@@ -86,6 +88,7 @@ export class GalleryComponent implements OnInit, DoCheck, AfterViewInit {
     }
 
     ngDoCheck(): void {
+        this.optionsLength = this.options.length;
         this.setOptions();
         if (this.images !== undefined && (this.images.length !== this.oldImagesLength)
             || (this.images !== this.oldImages)) {
@@ -254,165 +257,203 @@ export class GalleryComponent implements OnInit, DoCheck, AfterViewInit {
     }
 
     changeWidth(newWidth: string) {
-        this.options[0].width = newWidth;
+        for (let index = 0; index < this.optionsLength; index++) {
+            this.options[index].width = newWidth;
+        }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changeHeight(newHeight: string) {
-        this.options[0].height = newHeight;
+        for (let index = 0; index < this.optionsLength; index++) {
+            this.options[index].height = newHeight;
+        }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changeThumbPosition(): void {
-        if (this.options[0].layout === GalleryLayout.ThumbnailsTop) {
-            this.options[0].layout = GalleryLayout.ThumbnailsBottom;
-        } else {
-            this.options[0].layout = GalleryLayout.ThumbnailsTop;
+        for (let index = 0; index < this.optionsLength; index++) {
+            if (this.options[index].layout === GalleryLayout.ThumbnailsTop) {
+                this.options[index].layout = GalleryLayout.ThumbnailsBottom;
+            } else {
+                this.options[index].layout = GalleryLayout.ThumbnailsTop;
+            }
         }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changeImageSize(): void {
-        if (this.options[0].imageSize === GalleryImageSize.Cover) {
-            this.options[0].imageSize = GalleryImageSize.Contain;
-        } else {
-            this.options[0].imageSize = GalleryImageSize.Cover;
+        for (let index = 0; index < this.optionsLength; index++) {
+            if (this.options[index].imageSize === GalleryImageSize.Cover) {
+                this.options[index].imageSize = GalleryImageSize.Contain;
+            } else {
+                this.options[index].imageSize = GalleryImageSize.Cover;
+            }
         }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changeThumbnailSize(): void {
-        if (this.options[0].thumbnailSize === GalleryImageSize.Cover) {
-            this.options[0].thumbnailSize = GalleryImageSize.Contain;
-        } else {
-            this.options[0].thumbnailSize = GalleryImageSize.Cover;
+        for (let index = 0; index < this.optionsLength; index++) {
+            if (this.options[index].thumbnailSize === GalleryImageSize.Cover) {
+                this.options[index].thumbnailSize = GalleryImageSize.Contain;
+            } else {
+                this.options[index].thumbnailSize = GalleryImageSize.Cover;
+            }
         }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changeImage(): void {
-        if(this.options[0].image === true) {
-            this.options[0].image = false;
-        } else {
-            this.options[0].image = true;
+        for (let index = 0; index < this.optionsLength; index++) {
+            if (this.options[index].image === true) {
+                this.options[index].image = false;
+            } else {
+                this.options[index].image = true;
+            }
         }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changeThumbnails(): void {
-        if(this.options[0].thumbnails === true) {
-            this.options[0].thumbnails = false;
-        } else {
-            this.options[0].thumbnails = true;
+        for (let index = 0; index < this.optionsLength; index++) {
+            if (this.options[index].thumbnails === true) {
+                this.options[index].thumbnails = false;
+            } else {
+                this.options[index].thumbnails = true;
+            }
         }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changePreview(): void {
-        if(this.options[0].preview === true) {
-            this.options[0].preview = false;
-        } else {
-            this.options[0].preview = true;
+        for (let index = 0; index < this.optionsLength; index++) {
+            if (this.options[0].preview === true) {
+                this.options[0].preview = false;
+            } else {
+                this.options[0].preview = true;
+            }
         }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changeImageArrows(): void {
-        if(this.options[0].imageArrows === true) {
-            this.options[0].imageArrows = false;
-        } else {
-            this.options[0].imageArrows = true;
+        for (let index = 0; index < this.optionsLength; index++) {
+            if (this.options[index].imageArrows === true) {
+                this.options[index].imageArrows = false;
+            } else {
+                this.options[index].imageArrows = true;
+            }
         }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changePreviewArrows(): void {
-        if(this.options[0].previewArrows === true) {
-            this.options[0].previewArrows = false;
-        } else {
-            this.options[0].previewArrows = true;
+        for (let index = 0; index < this.optionsLength; index++) {
+            if (this.options[index].previewArrows === true) {
+                this.options[index].previewArrows = false;
+            } else {
+                this.options[index].previewArrows = true;
+            }
         }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changePreviewAutoPlay(): void {
-        if(this.options[0].previewAutoPlay === true) {
-            this.options[0].previewAutoPlay = false;
-        } else {
-            this.options[0].previewAutoPlay = true;
+        for (let index = 0; index < this.optionsLength; index++) {
+            if (this.options[index].previewAutoPlay === true) {
+                this.options[index].previewAutoPlay = false;
+            } else {
+                this.options[index].previewAutoPlay = true;
+            }
         }
         this.options = this.options.slice(0, this.options.length);
     }
 
 
     changePreviewDescription(): void {
-        if(this.options[0].previewDescription === true) {
-            this.options[0].previewDescription = false;
-        } else {
-            this.options[0].previewDescription = true;
+        for (let index = 0; index < this.optionsLength; index++) {
+            if (this.options[index].previewDescription === true) {
+                this.options[index].previewDescription = false;
+            } else {
+                this.options[index].previewDescription = true;
+            }
         }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changePreviewFullscreen(): void {
-        if(this.options[0].previewFullscreen === true) {
-            this.options[0].previewFullscreen = false;
-        } else {
-            this.options[0].previewFullscreen = true;
+        for (let index = 0; index < this.optionsLength; index++) {
+            if (this.options[index].previewFullscreen === true) {
+                this.options[index].previewFullscreen = false;
+            } else {
+                this.options[index].previewFullscreen = true;
+            }
         }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changePreviewCloseonClick(): void {
-        if(this.options[0].previewCloseOnClick === true) {
-            this.options[0].previewCloseOnClick = false;
-        } else {
-            this.options[0].previewCloseOnClick = true;
+        for (let index = 0; index < this.optionsLength; index++) {
+            if (this.options[index].previewCloseOnClick === true) {
+                this.options[index].previewCloseOnClick = false;
+            } else {
+                this.options[index].previewCloseOnClick = true;
+            }
         }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changePreviewCloseonEsc(): void {
-        if(this.options[0].previewCloseOnEsc === true) {
-            this.options[0].previewCloseOnEsc = false;
-        } else {
-            this.options[0].previewCloseOnEsc = true;
+        for (let index = 0; index < this.optionsLength; index++) {
+            if (this.options[index].previewCloseOnEsc === true) {
+                this.options[index].previewCloseOnEsc = false;
+            } else {
+                this.options[index].previewCloseOnEsc = true;
+            }
         }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changePreviewKeyboardNavigation(): void {
-        if(this.options[0].previewKeyboardNavigation === true) {
-            this.options[0].previewKeyboardNavigation = false;
-        } else {
-            this.options[0].previewKeyboardNavigation = true;
+        for (let index = 0; index < this.optionsLength; index++) {
+            if (this.options[index].previewKeyboardNavigation === true) {
+                this.options[index].previewKeyboardNavigation = false;
+            } else {
+                this.options[index].previewKeyboardNavigation = true;
+            }
         }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changePreviewZoom(): void {
-        if(this.options[0].previewZoom === true) {
-            this.options[0].previewZoom = false;
-        } else {
-            this.options[0].previewZoom = true;
+        for (let index = 0; index < this.optionsLength; index++) {
+            if (this.options[index].previewZoom === true) {
+                this.options[index].previewZoom = false;
+            } else {
+                this.options[index].previewZoom = true;
+            }
         }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changePreviewRotate(): void {
-        if(this.options[0].previewRotate === true) {
-            this.options[0].previewRotate = false;
-        } else {
-            this.options[0].previewRotate = true;
+        for (let index = 0; index < this.optionsLength; index++) {
+            if (this.options[index].previewRotate === true) {
+                this.options[index].previewRotate = false;
+            } else {
+                this.options[index].previewRotate = true;
+            }
         }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changePreviewDownload(): void {
-        if(this.options[0].previewDownload === true) {
-            this.options[0].previewDownload = false;
-        } else {
-            this.options[0].previewDownload = true;
+        for (let index = 0; index < this.optionsLength; index++) {
+            if (this.options[index].previewDownload === true) {
+                this.options[index].previewDownload = false;
+            } else {
+                this.options[index].previewDownload = true;
+            }
         }
         this.options = this.options.slice(0, this.options.length);
     }
