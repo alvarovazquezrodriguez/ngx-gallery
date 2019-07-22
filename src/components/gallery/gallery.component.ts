@@ -263,104 +263,157 @@ export class GalleryComponent implements OnInit, DoCheck, AfterViewInit {
         this.options = this.options.slice(0, this.options.length);
     }
 
-    changeThumbPosition(aux: string): void {
-        if (aux === 'Top') {
-            this.options[0].layout = GalleryLayout.ThumbnailsTop;
-            this.options = this.options.slice(0, this.options.length);
-        } else {
+    changeThumbPosition(): void {
+        if (this.options[0].layout === GalleryLayout.ThumbnailsTop) {
             this.options[0].layout = GalleryLayout.ThumbnailsBottom;
-            this.options = this.options.slice(0, this.options.length);
+        } else {
+            this.options[0].layout = GalleryLayout.ThumbnailsTop;
         }
+        this.options = this.options.slice(0, this.options.length);
     }
 
-    changeImageSize(aux: string): void {
-        if (aux === 'Cover') {
-            this.options[0].imageSize = GalleryImageSize.Cover;
-            this.options = this.options.slice(0, this.options.length);
-        } else {
+    changeImageSize(): void {
+        if (this.options[0].imageSize === GalleryImageSize.Cover) {
             this.options[0].imageSize = GalleryImageSize.Contain;
-            this.options = this.options.slice(0, this.options.length);
+        } else {
+            this.options[0].imageSize = GalleryImageSize.Cover;
         }
+        this.options = this.options.slice(0, this.options.length);
     }
 
-    changeThumbnailSize(aux: string): void {
-        if (aux === 'Cover') {
-            this.options[0].thumbnailSize = GalleryImageSize.Cover;
-            this.options = this.options.slice(0, this.options.length);
-        } else {
+    changeThumbnailSize(): void {
+        if (this.options[0].thumbnailSize === GalleryImageSize.Cover) {
             this.options[0].thumbnailSize = GalleryImageSize.Contain;
-            this.options = this.options.slice(0, this.options.length);
+        } else {
+            this.options[0].thumbnailSize = GalleryImageSize.Cover;
         }
+        this.options = this.options.slice(0, this.options.length);
     }
 
     changeImage(): void {
-        this.options[0].image = !(this.options[0].image);
+        if(this.options[0].image === true) {
+            this.options[0].image = false;
+        } else {
+            this.options[0].image = true;
+        }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changeThumbnails(): void {
-        this.options[0].thumbnails = !(this.options[0].thumbnails);
+        if(this.options[0].thumbnails === true) {
+            this.options[0].thumbnails = false;
+        } else {
+            this.options[0].thumbnails = true;
+        }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changePreview(): void {
-        this.options[0].preview = !(this.options[0].preview);
+        if(this.options[0].preview === true) {
+            this.options[0].preview = false;
+        } else {
+            this.options[0].preview = true;
+        }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changeImageArrows(): void {
-        this.options[0].imageArrows = !(this.options[0].imageArrows);
+        if(this.options[0].imageArrows === true) {
+            this.options[0].imageArrows = false;
+        } else {
+            this.options[0].imageArrows = true;
+        }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changePreviewArrows(): void {
-        this.options[0].previewArrows = !(this.options[0].previewArrows);
+        if(this.options[0].previewArrows === true) {
+            this.options[0].previewArrows = false;
+        } else {
+            this.options[0].previewArrows = true;
+        }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changePreviewAutoPlay(): void {
-        this.options[0].previewAutoPlay = !(this.options[0].previewAutoPlay);
+        if(this.options[0].previewAutoPlay === true) {
+            this.options[0].previewAutoPlay = false;
+        } else {
+            this.options[0].previewAutoPlay = true;
+        }
         this.options = this.options.slice(0, this.options.length);
     }
 
 
     changePreviewDescription(): void {
-        this.options[0].previewDescription = !(this.options[0].previewDescription);
+        if(this.options[0].previewDescription === true) {
+            this.options[0].previewDescription = false;
+        } else {
+            this.options[0].previewDescription = true;
+        }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changePreviewFullscreen(): void {
-        this.options[0].previewFullscreen = !(this.options[0].previewFullscreen);
+        if(this.options[0].previewFullscreen === true) {
+            this.options[0].previewFullscreen = false;
+        } else {
+            this.options[0].previewFullscreen = true;
+        }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changePreviewCloseonClick(): void {
-        this.options[0].previewCloseOnClick = !(this.options[0].previewCloseOnClick);
+        if(this.options[0].previewCloseOnClick === true) {
+            this.options[0].previewCloseOnClick = false;
+        } else {
+            this.options[0].previewCloseOnClick = true;
+        }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changePreviewCloseonEsc(): void {
-        this.options[0].previewCloseOnEsc = !(this.options[0].previewCloseOnEsc);
+        if(this.options[0].previewCloseOnEsc === true) {
+            this.options[0].previewCloseOnEsc = false;
+        } else {
+            this.options[0].previewCloseOnEsc = true;
+        }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changePreviewKeyboardNavigation(): void {
-        this.options[0].previewKeyboardNavigation = !(this.options[0].previewKeyboardNavigation);
+        if(this.options[0].previewKeyboardNavigation === true) {
+            this.options[0].previewKeyboardNavigation = false;
+        } else {
+            this.options[0].previewKeyboardNavigation = true;
+        }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changePreviewZoom(): void {
-        this.options[0].previewZoom = !(this.options[0].previewZoom);
+        if(this.options[0].previewZoom === true) {
+            this.options[0].previewZoom = false;
+        } else {
+            this.options[0].previewZoom = true;
+        }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changePreviewRotate(): void {
-        this.options[0].previewRotate = !(this.options[0].previewRotate);
+        if(this.options[0].previewRotate === true) {
+            this.options[0].previewRotate = false;
+        } else {
+            this.options[0].previewRotate = true;
+        }
         this.options = this.options.slice(0, this.options.length);
     }
 
     changePreviewDownload(): void {
-        this.options[0].previewDownload = !(this.options[0].previewDownload);
+        if(this.options[0].previewDownload === true) {
+            this.options[0].previewDownload = false;
+        } else {
+            this.options[0].previewDownload = true;
+        }
         this.options = this.options.slice(0, this.options.length);
     }
 
