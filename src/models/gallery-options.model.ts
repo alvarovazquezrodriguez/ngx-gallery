@@ -168,7 +168,7 @@ export class GalleryOptions implements IGalleryOptions {
         this.zoomOutIcon = use(obj.zoomOutIcon, 'zoom_out');
         this.rotateLeftIcon = use(obj.rotateLeftIcon, 'rotate_left');
         this.rotateRightIcon = use(obj.rotateRightIcon, 'rotate_right');
-        this.downloadIcon = use(obj.downloadIcon, 'save');
+        this.downloadIcon = use(obj.downloadIcon, 'cloud_download');
 
         if (obj && obj.actions && obj.actions.length) {
             obj.actions = obj.actions.map(action => new GalleryAction(action));
